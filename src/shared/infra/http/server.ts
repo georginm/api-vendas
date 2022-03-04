@@ -3,11 +3,12 @@ import express from 'express';
 import cors from 'cors';
 import routes from './routes';
 import handleError from './middleware/handleError';
-
-const app = express();
+import createConnection from '@shared/infra/typeorm';
 
 const PORT = 3333;
 
+createConnection();
+const app = express();
 app.use(cors());
 app.use(express.json());
 
