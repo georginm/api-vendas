@@ -2,7 +2,7 @@ import { Product } from '@modules/products/infra/typeorm/entities/Product';
 import { ProductRepository } from '@modules/products/infra/typeorm/repositories/ProductRepository';
 import { getCustomRepository } from 'typeorm';
 
-class ListProductRepository {
+class ListProductService {
   async execute(): Promise<Product[]> {
     const productsRepository = getCustomRepository(ProductRepository);
 
@@ -12,4 +12,4 @@ class ListProductRepository {
   }
 }
 
-export { ListProductRepository };
+export { ListProductService };
