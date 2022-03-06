@@ -1,5 +1,5 @@
 import { getCustomRepository } from 'typeorm';
-import { ProductRepository } from '@modules/products/typeorm/repositories/ProductRepository';
+import { ProductRepository } from '@modules/products/infra/typeorm/repositories/ProductRepository';
 import { BadRequestError } from '@shared/errors/BadRequestError';
 
 interface IRequest {
