@@ -1,5 +1,7 @@
-import { BadRequestError } from '@shared/errors/BadRequestError';
 import { EntityRepository, Repository } from 'typeorm';
+
+import { BadRequestError } from '@shared/errors/BadRequestError';
+
 import { Product } from '../entities/Product';
 
 @EntityRepository(Product)
