@@ -12,6 +12,8 @@ services:
     depends_on:
       - db
       - redis
+    networks:
+      - apivendas
 
   db:
     build: .docker/postgres
@@ -25,12 +27,16 @@ services:
     environment:
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=apivendas
+    networks:
+      - apivendas
 
   redis:
     image: 'bitnami/redis:latest'
     container_name: apivendas-redis
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - apivendas
 
   pgadmin:
     image: dpage/pgadmin4
@@ -43,3 +49,7 @@ services:
       - 8000:80
     depends_on:
       - db
+
+networks:
+  apivendas:
+    driver: bridge
