@@ -1,10 +1,10 @@
 import { Router } from 'express';
 
-import { CreateProductController } from '../controllers/createProductController/CreateProductController';
-import { DeleteProductController } from '../controllers/deleteProductController/DeleteProductController';
-import { ListProductController } from '../controllers/listProductController/ListProductController';
-import { ShowProductController } from '../controllers/showProductController/ShowProductController';
-import { UpdateProductController } from '../controllers/updateProductController/UpdateProductController';
+import { CreateProductController } from '../controllers/CreateProductController';
+import { DeleteProductController } from '../controllers/DeleteProductController';
+import { ListProductController } from '../controllers/ListProductController';
+import { ShowProductController } from '../controllers/ShowProductController';
+import { UpdateProductController } from '../controllers/UpdateProductController';
 
 const productRoutes = Router();
 
