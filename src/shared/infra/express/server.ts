@@ -19,5 +19,6 @@ app.use(router);
 app.use(handleError);
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Running server on port ${PORT}`);
 });
