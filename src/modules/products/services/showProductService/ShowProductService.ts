@@ -14,11 +14,11 @@ class ShowProductService {
 
     const product = await productsRepository.findOne(id);
 
-    if (product) {
-      return product;
+    if (!product) {
+      throw new BadRequestError('Product not found');
     }
 
-    throw new BadRequestError('Product not found');
+    return product;
   }
 }
 

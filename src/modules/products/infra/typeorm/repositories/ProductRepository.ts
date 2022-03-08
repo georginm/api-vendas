@@ -1,19 +1,17 @@
 import { EntityRepository, Repository } from 'typeorm';
 
-import { BadRequestError } from '@shared/errors/BadRequestError';
-
 import { Product } from '../entities/Product';
 
 @EntityRepository(Product)
 class ProductRepository extends Repository<Product> {
-  public async findByName(name: string): Promise<Product> {
+  public async findByName(name: string): Promise<Product | null> {
     const product = await this.findOne({ where: { name } });
 
-    if (product) {
-      return product;
+    if (!product) {
+      return null;
     }
 
-    throw new BadRequestError('Product not exists');
+    return product;
   }
 }
 

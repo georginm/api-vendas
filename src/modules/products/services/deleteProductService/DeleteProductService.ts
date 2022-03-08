@@ -13,11 +13,11 @@ class DeleteProductService {
 
     const product = await productsRepository.findOne(id);
 
-    if (product) {
-      productsRepository.remove(product);
+    if (!product) {
+      throw new BadRequestError('Product not found');
     }
 
-    throw new BadRequestError('Product not found');
+    productsRepository.remove(product);
   }
 }
 
