@@ -5,7 +5,7 @@ export default (
   error: Error,
   request: Request,
   response: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   if (error instanceof AppError) {
     return response.status(error.statusCode).json({
