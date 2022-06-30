@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import 'express-async-errors';
+import upload from '@config/upload';
 import cors from 'cors';
 import express from 'express';
 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(router);
+app.use('/files', express.static(upload.directory));
 app.use(handleError);
 
 export { app };
