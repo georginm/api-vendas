@@ -3,8 +3,8 @@ import { Router } from 'express';
 
 import { ensureAuthenticated } from '@shared/infra/express/middleware/ensureAuthenticated';
 
-import { CreateUsersController } from '../controllers/CreateUsersController';
-import { ListUsersController } from '../controllers/ListUsersController';
+import { CreateUsersController } from '../controllers/usersControllers/CreateUsersController';
+import { ListUsersController } from '../controllers/usersControllers/ListUsersController';
 
 const usersRoutes = Router();
 
