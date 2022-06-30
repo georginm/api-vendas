@@ -36,7 +36,7 @@ export class CreateProducts1646403395152 implements MigrationInterface {
             default: 'now()',
           },
         ],
-      }),
+      })
     );
   }
 
