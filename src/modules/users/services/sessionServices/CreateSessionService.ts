@@ -1,5 +1,4 @@
 import { auth } from '@config/auth';
-import { ICreateSessionDTO } from '@modules/users/dto/ICreateSessionDTO';
 import { User } from '@modules/users/infra/typeorm/entities/Users';
 import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import { compare } from 'bcryptjs';
@@ -13,11 +12,13 @@ interface IResponse {
   token: string;
 }
 
+interface IRequest {
+  email: string;
+  password: string;
+}
+
 class CreateSessionService {
-  public async execute({
-    email,
-    password,
-  }: ICreateSessionDTO): Promise<IResponse> {
+  public async execute({ email, password }: IRequest): Promise<IResponse> {
     const usersRepository = getCustomRepository(UsersRepository);
 
     const user = await usersRepository.findByEmail(email);

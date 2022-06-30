@@ -1,15 +1,14 @@
-import { ICreateTokenDTO } from '@modules/users/dto/ICreateTokenDTO';
 import { IUserTokensRepository } from '@modules/users/repositories/IUsertokensRepository';
 import { EntityRepository, Repository } from 'typeorm';
 
 import { UserToken } from '../entities/UsersToken';
 
 @EntityRepository(UserToken)
-class UsersRepository
+class UserTokensRepository
   extends Repository<UserToken>
   implements IUserTokensRepository
 {
-  public async generate({ userId }: ICreateTokenDTO): Promise<UserToken> {
+  public async generate(userId: string): Promise<UserToken | undefined> {
     const userToken = this.create({ userId });
 
     return this.save(userToken);
@@ -26,4 +25,4 @@ class UsersRepository
   }
 }
 
-export { UsersRepository };
+export { UserTokensRepository };

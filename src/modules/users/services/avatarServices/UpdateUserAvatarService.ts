@@ -1,4 +1,3 @@
-import { IUploadUserAvatarDTO } from '@modules/users/dto/IUploadUserAvatarDTO';
 import { User } from '@modules/users/infra/typeorm/entities/Users';
 import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import upload from 'config/upload';
@@ -8,11 +7,13 @@ import { getCustomRepository } from 'typeorm';
 
 import { BadRequestError } from '@shared/errors/BadRequestError';
 
+interface IRequest {
+  userId: string;
+  avatar: string;
+}
+
 class UpdateUserAvatarService {
-  public async execute({
-    userId,
-    avatar,
-  }: IUploadUserAvatarDTO): Promise<User> {
+  public async execute({ userId, avatar }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
 
     const user = await usersRepository.findById(userId);
