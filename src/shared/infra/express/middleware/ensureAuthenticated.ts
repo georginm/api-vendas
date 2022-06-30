@@ -4,6 +4,12 @@ import { verify } from 'jsonwebtoken';
 
 import UnauthorizedError from '@shared/errors/UnauthorizedError';
 
+interface IPayload {
+  iat: number;
+  exp: number;
+  sub: string;
+}
+
 const ensureAuthenticated = (
   request: Request,
   response: Response,
@@ -18,7 +24,12 @@ const ensureAuthenticated = (
   const [, token] = authHeader.split(' ');
 
   try {
-    const decodeToken = verify(token, auth.secret);
+    const { sub: userId } = verify(token, auth.secret) as IPayload;
+
+    request.user = {
+      id: userId,
+    };
+
     next();
   } catch (error) {
     throw new UnauthorizedError('Invalid Token.');
