@@ -1,6 +1,8 @@
 import { celebrate, Joi, Segments } from 'celebrate';
 import { Router } from 'express';
 
+import { ensureAuthenticated } from '@shared/infra/express/middleware/ensureAuthenticated';
+
 import { CreateUsersController } from '../controllers/CreateUsersController';
 import { ListUsersController } from '../controllers/ListUsersController';
 
@@ -15,9 +17,10 @@ usersRoutes.post(
       password: Joi.string().required(),
     },
   }),
+  ensureAuthenticated,
   new CreateUsersController().handle
 );
 
-usersRoutes.get('/', new ListUsersController().handle);
+usersRoutes.get('/', ensureAuthenticated, new ListUsersController().handle);
 
 export { usersRoutes };
