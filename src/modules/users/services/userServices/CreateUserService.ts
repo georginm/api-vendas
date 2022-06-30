@@ -1,11 +1,10 @@
+import { ICreateUserDTO } from '@modules/users/dto/ICreateUserDTO';
+import { User } from '@modules/users/infra/typeorm/entities/Users';
+import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import { hash } from 'bcryptjs';
 import { getCustomRepository } from 'typeorm';
 
 import { BadRequestError } from '@shared/errors/BadRequestError';
-
-import { ICreateUserDTO } from '../dto/ICreateUserDTO';
-import { User } from '../infra/typeorm/entities/Users';
-import { UsersRepository } from '../infra/typeorm/repositories/UsersRepository';
 
 class CreateUserService {
   public async execute({

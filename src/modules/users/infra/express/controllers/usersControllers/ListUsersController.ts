@@ -1,4 +1,4 @@
-import { ListUserService } from '@modules/users/services/ListUserService';
+import { ListUserService } from '@modules/users/services/userServices/ListUserService';
 import { Request, Response } from 'express';
 
 class ListUsersController {

@@ -1,4 +1,4 @@
-import { ShowProductService } from '@modules/products/services/showProductService/ShowProductService';
+import { ShowProductService } from '@modules/products/services/productServices/showProductService/ShowProductService';
 import { Request, Response } from 'express';
 
 class ShowProductController {

@@ -1,4 +1,4 @@
-import { DeleteProductService } from '@modules/products/services/deleteProductService/DeleteProductService';
+import { DeleteProductService } from '@modules/products/services/productServices/deleteProductService/DeleteProductService';
 import { Request, Response } from 'express';
 
 class DeleteProductController {

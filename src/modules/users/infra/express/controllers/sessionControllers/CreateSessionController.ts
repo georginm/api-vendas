@@ -1,4 +1,4 @@
-import { CreateSessionService } from '@modules/users/services/CreateSessionService';
+import { CreateSessionService } from '@modules/users/services/sessionServices/CreateSessionService';
 import { Request, Response } from 'express';
 
 class CreateSessionController {

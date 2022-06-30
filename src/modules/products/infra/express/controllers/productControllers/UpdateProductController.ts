@@ -1,4 +1,4 @@
-import { UpdateProductService } from '@modules/products/services/updateProductService/UpdateProductService';
+import { UpdateProductService } from '@modules/products/services/productServices/updateProductService/UpdateProductService';
 import { Request, Response } from 'express';
 
 class UpdateProductController {

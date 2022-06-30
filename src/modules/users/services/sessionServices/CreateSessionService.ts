@@ -1,13 +1,12 @@
 import { auth } from '@config/auth';
+import { ICreateSessionDTO } from '@modules/users/dto/ICreateSessionDTO';
+import { User } from '@modules/users/infra/typeorm/entities/Users';
+import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { getCustomRepository } from 'typeorm';
 
 import UnauthorizedError from '@shared/errors/UnauthorizedError';
-
-import { ICreateSessionDTO } from '../dto/ICreateSessionDTO';
-import { User } from '../infra/typeorm/entities/Users';
-import { UsersRepository } from '../infra/typeorm/repositories/UsersRepository';
 
 interface IResponse {
   user: User;

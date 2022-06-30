@@ -1,4 +1,4 @@
-import { CreateProductService } from '@modules/products/services/createProductService/CreateProductService';
+import { CreateProductService } from '@modules/products/services/productServices/createProductService/CreateProductService';
 import { Request, Response } from 'express';
 
 class CreateProductController {

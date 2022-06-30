@@ -1,4 +1,4 @@
-import { CreateUserService } from '@modules/users/services/CreateUserService';
+import { CreateUserService } from '@modules/users/services/userServices/CreateUserService';
 import { Request, Response } from 'express';
 
 class CreateUsersController {
