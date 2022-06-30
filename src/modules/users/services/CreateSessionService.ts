@@ -1,3 +1,4 @@
+import { auth } from '@config/auth';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { getCustomRepository } from 'typeorm';
@@ -32,9 +33,9 @@ class CreateSessionService {
       throw new UnauthorizedError('Incorrect email/password combination');
     }
 
-    const token = await sign({}, 'asdasjd398has21398hdsfaasdag', {
+    const token = await sign({}, auth.secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn: auth.expiresIn,
     });
 
     return { user, token };
