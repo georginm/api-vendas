@@ -3,8 +3,8 @@ import { getCustomRepository } from 'typeorm';
 import { BadRequestError } from '@shared/errors/BadRequestError';
 
 import { ICreateUserDTO } from '../dto/ICreateUserDTO';
-import { User } from '../typeorm/entities/Users';
-import { UsersRepository } from '../typeorm/repositories/UsersRepository';
+import { User } from '../infra/typeorm/entities/Users';
+import { UsersRepository } from '../infra/typeorm/repositories/UsersRepository';
 
 class CreateUserService {
   public async execute({
