@@ -1,3 +1,4 @@
+import { hash } from 'bcryptjs';
 import { getCustomRepository } from 'typeorm';
 
 import { BadRequestError } from '@shared/errors/BadRequestError';
@@ -18,7 +19,13 @@ class CreateUserService {
 
     if (emailExists) throw new BadRequestError('Email already used');
 
-    const user = usersRepository.createUser({ name, email, password });
+    const hashedPassword = await hash(password, 8);
+
+    const user = usersRepository.createUser({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
     return user;
   }
