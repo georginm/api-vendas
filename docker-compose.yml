@@ -11,12 +11,12 @@ services:
       - .:/home/node/app
     depends_on:
       - db
-      - redis
+      # - redis
     networks:
       - apivendas
 
   db:
-    build: .docker/postgres
+    image: postgres
     container_name: apivendas-db
     restart: always
     tty: true
@@ -25,18 +25,19 @@ services:
     volumes:
       - .docker/dbdata:/var/lib/postgresql/data
     environment:
+      - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=apivendas
     networks:
       - apivendas
 
-  redis:
-    image: 'bitnami/redis:latest'
-    container_name: apivendas-redis
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-    networks:
-      - apivendas
+  # redis:
+  #   image: 'bitnami/redis:latest'
+  #   container_name: apivendas-redis
+  #   environment:
+  #     - ALLOW_EMPTY_PASSWORD=yes
+  #   networks:
+  #     - apivendas
 
   pgadmin:
     image: dpage/pgadmin4
@@ -53,3 +54,7 @@ services:
 networks:
   apivendas:
     driver: bridge
+
+volumes:
+  pgdata:
+    driver: local
