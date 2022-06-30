@@ -1,6 +1,6 @@
 interface IUploadUserAvatarDTO {
   userId: string;
-  avatarFileName: string;
+  avatar: string;
 }
 
 export { IUploadUserAvatarDTO };
