@@ -6,7 +6,7 @@ import express from 'express';
 import createConnection from '@shared/infra/typeorm';
 
 import handleError from './middleware/handleError';
-import router from './routes';
+import { router } from './routes';
 
 createConnection();
 const app = express();
