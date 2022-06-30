@@ -9,7 +9,9 @@ import handleError from './middleware/handleError';
 import { router } from './routes';
 
 createConnection();
+
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
