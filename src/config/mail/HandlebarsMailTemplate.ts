@@ -1,20 +1,15 @@
+import fs from 'fs';
 import handlebars from 'handlebars';
 
-interface ITemplateVariable {
-  [key: string]: string | number;
-}
-
-interface IParseMailTemplate {
-  template: string;
-  variables: ITemplateVariable;
-}
+import { IParseMailTemplate } from './IParseMailTemplate';
 
 class HandleBarsMailTemplate {
-  public async parse({
-    template,
-    variables,
-  }: IParseMailTemplate): Promise<string> {
-    const parseTemplate = handlebars.compile(template);
+  public async parse({ file, variables }: IParseMailTemplate): Promise<string> {
+    const templateFileContent = await fs.promises.readFile(file, {
+      encoding: 'utf-8',
+    });
+
+    const parseTemplate = handlebars.compile(templateFileContent);
 
     return parseTemplate(variables);
   }
