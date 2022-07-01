@@ -1,3 +1,4 @@
+import { EtherealMail } from '@config/mail/EtherealMail';
 import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import { UserTokensRepository } from '@modules/users/infra/typeorm/repositories/UserTokensRepository';
 import { getCustomRepository } from 'typeorm';
@@ -15,9 +16,14 @@ class SendForgotPasswordEmailService {
       throw new BadRequestError('User does not exists.');
     }
 
-    const token = await userTokensRepository.generate(user.id);
+    const userToken = await userTokensRepository.generate(user.id);
 
-    console.log(token);
+    // console.log(token);
+
+    await EtherealMail.sendMail({
+      to: email,
+      body: `Solicitação de redefinição de senha recebida ${userToken.token}`,
+    });
   }
 }
 

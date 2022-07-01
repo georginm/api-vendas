@@ -8,7 +8,7 @@ class UserTokensRepository
   extends Repository<UserToken>
   implements IUserTokensRepository
 {
-  public async generate(userId: string): Promise<UserToken | undefined> {
+  public async generate(userId: string): Promise<UserToken> {
     const userToken = this.create({ userId });
 
     return this.save(userToken);
