@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-@Entity('user_token')
+@Entity('user_tokens')
 class UserToken {
   @PrimaryColumn()
   id: string;
