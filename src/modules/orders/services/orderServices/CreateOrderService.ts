@@ -12,17 +12,17 @@ interface IProduct {
 }
 
 interface IRequest {
-  customer_id: string;
+  customerId: string;
   products: IProduct[];
 }
 
 class CreateOrderService {
-  async execute({ customer_id, products }: IRequest): Promise<Order> {
+  async execute({ customerId, products }: IRequest): Promise<Order> {
     const ordersRepository = getCustomRepository(OrdersRepository);
     const customersRepository = getCustomRepository(CustomersRepository);
     const productsRepository = getCustomRepository(ProductRepository);
 
-    const customersExists = await customersRepository.findById(customer_id);
+    const customersExists = await customersRepository.findById(customerId);
 
     if (!customersExists) {
       throw new BadRequestError(
