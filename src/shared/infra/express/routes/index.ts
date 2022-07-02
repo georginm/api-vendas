@@ -1,4 +1,5 @@
 import { customersRoutes } from '@modules/customers/infra/express/routes/customers.routes';
+import { ordersRoutes } from '@modules/orders/infra/express/routes/order.sroutes';
 import { productRoutes } from '@modules/products/infra/express/routes/productRoute';
 import { passwordRoutes } from '@modules/users/infra/express/routes/password.routes';
 import { profileRouter } from '@modules/users/infra/express/routes/profile.routes';
@@ -14,5 +15,6 @@ router.use('/sessions', sessionRoutes);
 router.use('/password', passwordRoutes);
 router.use('/profile', profileRouter);
 router.use('/customers', customersRoutes);
+router.use('/orders', ordersRoutes);
 
 export { router };
