@@ -78,8 +78,8 @@ class CreateOrderService {
     const updatedProductQuantity = orderProducts.map((product) => ({
       id: product.productId,
       quantity:
-        existsProducts.filter((prod) => prod.id === product.id)[0].quantity -
-        product.quantity,
+        existsProducts.filter((prod) => prod.id === product.productId)[0]
+          .quantity - product.quantity,
     }));
 
     await productsRepository.save(updatedProductQuantity);
