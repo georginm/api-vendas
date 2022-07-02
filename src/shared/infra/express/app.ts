@@ -4,6 +4,7 @@ import upload from '@config/upload';
 import { errors } from 'celebrate';
 import cors from 'cors';
 import express from 'express';
+import { pagination } from 'typeorm-pagination';
 
 import createConnection from '@shared/infra/typeorm';
 
@@ -13,6 +14,8 @@ import { router } from './routes';
 createConnection();
 
 const app = express();
+
+app.use(pagination);
 
 app.use(cors());
 app.use(express.json());
