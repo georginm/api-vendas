@@ -1,9 +1,11 @@
+import { OrdersProducts } from '@modules/orders/infra/typeorm/entities/OrdersProducts';
 import {
   Entity,
   PrimaryColumn,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -11,6 +13,9 @@ import { v4 as uuidv4 } from 'uuid';
 class Product {
   @PrimaryColumn()
   id: string;
+
+  @OneToMany(() => OrdersProducts, (orderProducts) => orderProducts.product)
+  orderProducts: OrdersProducts[];
 
   @Column()
   name: string;
