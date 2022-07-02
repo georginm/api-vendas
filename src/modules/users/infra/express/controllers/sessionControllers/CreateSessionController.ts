@@ -1,4 +1,5 @@
 import { CreateSessionService } from '@modules/users/services/sessionServices/CreateSessionService';
+import { instanceToInstance } from 'class-transformer';
 import { Request, Response } from 'express';
 
 class CreateSessionController {
@@ -9,7 +10,7 @@ class CreateSessionController {
 
     const user = await createSession.execute({ email, password });
 
-    return response.json(user);
+    return response.json(instanceToInstance(user));
   }
 }
 

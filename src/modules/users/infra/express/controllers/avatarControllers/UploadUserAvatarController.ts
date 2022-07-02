@@ -1,4 +1,5 @@
 import { UpdateUserAvatarService } from '@modules/users/services/avatarServices/UpdateUserAvatarService';
+import { instanceToInstance } from 'class-transformer';
 import { Request, Response } from 'express';
 
 import { BadRequestError } from '@shared/errors/BadRequestError';
@@ -14,7 +15,7 @@ class UploadUserAvatarController {
 
     const user = await updateAvatar.execute({ userId: id, avatar });
 
-    return response.json(user);
+    return response.json(instanceToInstance(user));
   }
 }
 

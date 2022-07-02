@@ -1,4 +1,5 @@
 import { UpdateProfileService } from '@modules/users/services/profileServices/UpdateProfileService';
+import { instanceToInstance } from 'class-transformer';
 import { Request, Response } from 'express';
 
 class UpdateProfileController {
@@ -16,7 +17,7 @@ class UpdateProfileController {
       oldPassword,
     });
 
-    return response.json(user);
+    return response.json(instanceToInstance(user));
   }
 }
 

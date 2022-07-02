@@ -1,4 +1,5 @@
 import { ShowProfileService } from '@modules/users/services/profileServices/ShowProfileServices';
+import { instanceToInstance } from 'class-transformer';
 import { Request, Response } from 'express';
 
 class ShowProfileController {
@@ -9,7 +10,7 @@ class ShowProfileController {
 
     const user = await showUser.execute({ userId });
 
-    return response.json(user);
+    return response.json(instanceToInstance(user));
   }
 }
 

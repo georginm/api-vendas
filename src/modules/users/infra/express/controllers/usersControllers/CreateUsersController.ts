@@ -1,4 +1,5 @@
 import { CreateUserService } from '@modules/users/services/userServices/CreateUserService';
+import { instanceToInstance } from 'class-transformer';
 import { Request, Response } from 'express';
 
 class CreateUsersController {
@@ -8,7 +9,7 @@ class CreateUsersController {
     const createUser = new CreateUserService();
     const user = await createUser.execute({ name, email, password });
 
-    return response.json(user);
+    return response.json(instanceToInstance(user));
   }
 }
 
