@@ -1,6 +1,6 @@
 import { customersRoutes } from '@modules/customers/infra/express/routes/customers.routes';
-import { ordersRoutes } from '@modules/orders/infra/express/routes/order.sroutes';
-import { productRoutes } from '@modules/products/infra/express/routes/productRoute';
+import { ordersRoutes } from '@modules/orders/infra/express/routes/orders.routes';
+import { productRoutes } from '@modules/products/infra/express/routes/products.routes';
 import { passwordRoutes } from '@modules/users/infra/express/routes/password.routes';
 import { profileRouter } from '@modules/users/infra/express/routes/profile.routes';
 import { sessionRoutes } from '@modules/users/infra/express/routes/sessions.routes';
