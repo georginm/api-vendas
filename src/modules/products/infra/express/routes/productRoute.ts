@@ -1,3 +1,4 @@
+import { celebrate, Joi, Segments } from 'celebrate';
 import { Router } from 'express';
 
 import { CreateProductController } from '../controllers/productControllers/CreateProductController';
@@ -8,10 +9,53 @@ import { UpdateProductController } from '../controllers/productControllers/Updat
 
 const productRoutes = Router();
 
-productRoutes.post('/', new CreateProductController().handle);
-productRoutes.delete('/:id', new DeleteProductController().handle);
+productRoutes.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      price: Joi.number().precision(2).required(),
+      quantity: Joi.number().required(),
+    },
+  }),
+  new CreateProductController().handle
+);
+
+productRoutes.delete(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  new DeleteProductController().handle
+);
+
 productRoutes.get('/', new ListProductController().handle);
-productRoutes.get('/:id', new ShowProductController().handle);
-productRoutes.put('/:id', new UpdateProductController().handle);
+
+productRoutes.get(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  new ShowProductController().handle
+);
+
+productRoutes.put(
+  '/:id',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      price: Joi.number().precision(2).required(),
+      quantity: Joi.number().required(),
+    },
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  new UpdateProductController().handle
+);
 
 export { productRoutes };
