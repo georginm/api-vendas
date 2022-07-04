@@ -32,8 +32,11 @@ services:
       - apivendas
 
   redis:
-    image: 'bitnami/redis:latest'
+    image: 'redis:alpine'
+    restart: always
     container_name: apivendas-redis
+    ports:
+      - 6379:6379
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     networks:
