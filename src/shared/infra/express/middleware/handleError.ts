@@ -1,7 +1,7 @@
-import AppError from '@errors/AppError';
+import { AppError } from '@errors/AppError';
 import { NextFunction, Request, Response } from 'express';
 
-export default (
+const handleError = (
   error: Error,
   request: Request,
   response: Response,
@@ -19,3 +19,5 @@ export default (
     message: `Internal server error ${error.message}`,
   });
 };
+
+export { handleError };

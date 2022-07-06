@@ -1,7 +1,9 @@
-import AppError from './AppError';
+import { AppError } from './AppError';
 
-export class BadRequestError extends AppError {
+class BadRequestError extends AppError {
   constructor(message: string) {
     super(message);
   }
 }
+
+export { BadRequestError };

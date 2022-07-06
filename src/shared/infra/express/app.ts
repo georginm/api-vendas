@@ -9,7 +9,7 @@ import { pagination } from 'typeorm-pagination';
 
 import createConnection from '@shared/infra/typeorm';
 
-import handleError from './middleware/handleError';
+import { handleError } from './middleware/handleError';
 import { router } from './routes';
 
 createConnection();

@@ -2,7 +2,7 @@ import { auth } from '@config/auth';
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 
-import UnauthorizedError from '@shared/errors/UnauthorizedError';
+import { UnauthorizedError } from '@shared/errors/UnauthorizedError';
 
 interface IPayload {
   iat: number;
