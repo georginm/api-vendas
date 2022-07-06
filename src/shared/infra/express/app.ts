@@ -10,11 +10,14 @@ import { pagination } from 'typeorm-pagination';
 import createConnection from '@shared/infra/typeorm';
 
 import { handleError } from './middleware/handleError';
+import { rateLimiter } from './middleware/rateLimiter';
 import { router } from './routes';
 
 createConnection();
 
 const app = express();
+
+app.use(rateLimiter);
 
 app.use(pagination);
 
