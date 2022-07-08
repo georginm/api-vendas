@@ -5,7 +5,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { getCustomRepository } from 'typeorm';
 
-import UnauthorizedError from '@shared/errors/UnauthorizedError';
+import { UnauthorizedError } from '@shared/errors/UnauthorizedError';
 
 interface IResponse {
   user: User;
@@ -33,7 +33,7 @@ class CreateSessionService {
       throw new UnauthorizedError('Incorrect email/password combination');
     }
 
-    const token = await sign({}, auth.secret, {
+    const token = sign({}, auth.secret ? auth.secret : '123456', {
       subject: user.id,
       expiresIn: auth.expiresIn,
     });

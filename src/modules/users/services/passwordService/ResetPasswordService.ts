@@ -5,7 +5,7 @@ import { isAfter, addHours } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
 
 import { BadRequestError } from '@shared/errors/BadRequestError';
-import UnauthorizedError from '@shared/errors/UnauthorizedError';
+import { UnauthorizedError } from '@shared/errors/UnauthorizedError';
 
 interface IRequest {
   token: string;
