@@ -11,7 +11,7 @@ import { ListUsersController } from '../controllers/usersControllers/ListUsersCo
 
 const usersRoutes = Router();
 
-const uploadAvatar = multer(upload);
+const uploadAvatar = multer(upload.multer);
 
 usersRoutes.post(
   '/',
