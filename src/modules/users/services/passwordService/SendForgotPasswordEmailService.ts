@@ -41,6 +41,7 @@ class SendForgotPasswordEmailService {
           },
         },
       });
+      return;
     }
 
     await EtherealMail.sendMail({
