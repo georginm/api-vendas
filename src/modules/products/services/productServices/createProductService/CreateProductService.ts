@@ -2,7 +2,7 @@ import { Product } from '@modules/products/infra/typeorm/entities/Product';
 import { ProductRepository } from '@modules/products/infra/typeorm/repositories/ProductRepository';
 import { getCustomRepository } from 'typeorm';
 
-import RedisCache from '@shared/cache/RedisCache';
+import { redisCache } from '@shared/cache/RedisCache';
 import { BadRequestError } from '@shared/errors/BadRequestError';
 
 interface IRequest {
@@ -26,8 +26,6 @@ class CreateProductService {
       price,
       quantity,
     });
-
-    const redisCache = new RedisCache();
 
     await redisCache.invalidate('APIVENDAS-[PRODUCT_LIST]');
 

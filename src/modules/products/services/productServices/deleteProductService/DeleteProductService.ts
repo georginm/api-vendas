@@ -1,7 +1,7 @@
 import { ProductRepository } from '@modules/products/infra/typeorm/repositories/ProductRepository';
 import { getCustomRepository } from 'typeorm';
 
-import RedisCache from '@shared/cache/RedisCache';
+import { redisCache } from '@shared/cache/RedisCache';
 import { BadRequestError } from '@shared/errors/BadRequestError';
 
 interface IRequest {
@@ -19,8 +19,6 @@ class DeleteProductService {
     }
 
     productsRepository.remove(product);
-
-    const redisCache = new RedisCache();
 
     await redisCache.invalidate('APIVENDAS-[PRODUCT_LIST]');
   }

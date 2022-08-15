@@ -2,13 +2,11 @@ import { Product } from '@modules/products/infra/typeorm/entities/Product';
 import { ProductRepository } from '@modules/products/infra/typeorm/repositories/ProductRepository';
 import { getCustomRepository } from 'typeorm';
 
-import RedisCache from '@shared/cache/RedisCache';
+import { redisCache } from '@shared/cache/RedisCache';
 
 class ListProductService {
   async execute(): Promise<Product[]> {
     const productsRepository = getCustomRepository(ProductRepository);
-
-    const redisCache = new RedisCache();
 
     let products = await redisCache.recover<Product[]>(
       'APIVENDAS-[PRODUCT_LIST]'
