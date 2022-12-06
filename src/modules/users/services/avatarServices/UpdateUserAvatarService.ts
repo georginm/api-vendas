@@ -15,12 +15,13 @@ interface IRequest {
 class UpdateUserAvatarService {
   public async execute({ userId, avatar }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
-    let storageProvider;
     const user = await usersRepository.findById(userId);
 
     if (!user) {
       throw new BadRequestError('User not found');
     }
+
+    let storageProvider;
 
     if (upload.driver === 's3') {
       storageProvider = new S3StorageProvider();
